@@ -1,36 +1,30 @@
-public class ElectricCar extends Car {
-	// Complete the constructor
-	// Note we're reinterpreting "fuelLevel" as "batteryLevel"
-	public ElectricCar(String model, int batteryLevel)
+public class ElectricCar extends Car
+{
+    
+    // Constructor
+    public ElectricCar(String model, int batteryLevel)
 	{
+        super(model, batteryLevel); // Call the Car constructor
+    }
 
-	}
-
-	// Override getFuelLevel
-	// Reinterprets fuelLevel() as a percentage
-	// Remember super.getFuelLevel will return fuelLevel!
-	public double fuelLevel()
+    // Override getFuelLevel
+    @Override
+    public double getFuelLevel()
 	{
-		return 0.0;
-	}
+        return super.getFuelLevel() / 100.0; // Convert to percentage
+    }
 
-
-	// Override milesLeft
-	// Takes one parameter - the total number of miles an ElectricCar
-	// gets on a full charge.
-	// Computes miles left by interpreting fuelLevel as the
-	// battery percentage left in the car
-	public double milesLeft(double milesOnFullCharge)
+    // Override milesLeft
+    @Override
+    public double milesLeft(double milesOnFullCharge)
 	{
-		return 0.0;
-	}
+        return getFuelLevel() * milesOnFullCharge; // Compute miles left based on battery percentage
+    }
 
-
-	// Override toString
-	// Should print: model electric car
-	public String toString()
+    // Override toString
+    @Override
+    public String toString()
 	{
-		return null;
-	}
+        return super.getModel() + " electric car";
+    }
 }
-
