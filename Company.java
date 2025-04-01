@@ -1,52 +1,39 @@
 public class Company {
+    private String name;
+    private String streetAddress;
+    private String city;
+    private String state;
 
-	private String name;
-	private String streetAddress;
-	private String city;
-	private String state;
+    public Company(String name) {
+        this.name = name;
+        this.streetAddress = null;
+        this.city = null;
+        this.state = null;
+    }
 
-	// Set missing values to null
-	public Company(String name)
-	{
+    public Company(String name, String streetAddress, String city, String state) {
+        this.name = name;
+        this.streetAddress = streetAddress;
+        this.city = city;
+        this.state = state;
+    }
 
-	}
+    public String getName() {
+        return name;
+    }
 
+    public String address() {
+        if (streetAddress == null || city == null || state == null) {
+            return "Address not available";
+        }
+        return streetAddress + "\n" + city + ", " + state;
+    }
 
-	public Company(String name, String streetAddress, String city, String state)
-	{
-
-	}
-
-	public String getName()
-	{
-		return null;
-	}
-
-	/** Should return a String of the form
- 	* [streetAddress]
-  	* [city], [state]
-   	* 
-	* Example output:
-	* 123 Main St
-	* Springfield, OH
-	*/
-	public String address()
-	{
-		return null;
-	}
-
-	/** Should return a String of the form
- 	* [name]
-  	* [streetAddress]
-   	* [city], [state]
-    	*
-	* Example output:
-	* Widget Company
-	* 123 Main St
-	* Springfield, OH
-	*/
-	public String toString()
-	{
-		return null;
-	}
+    @Override
+    public String toString() {
+        if (streetAddress == null || city == null || state == null) {
+            return name + "\nAddress not available";
+        }
+        return name + "\n" + address();
+    }
 }
