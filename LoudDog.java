@@ -1,13 +1,15 @@
-public class LoudDog extends Dog
-{
+public class LoudDog extends Dog {
+    public LoudDog(String name) {
+        super(name);
+    }
 
-	public LoudDog(String name){
-	 super(name);
-	}
+    @Override
+    public String speak() {
+        return super.speak() + " " + super.speak(); // LoudDog repeats the dog's speech
+    }
 
-	// Override the speak method here
-	
-	
-	//Override the toString here.
-	//Remember, you can access the name using super.getName()
+    @Override
+    public String toString() {
+        return "LoudDog: " + super.getName();
+    }
 }
