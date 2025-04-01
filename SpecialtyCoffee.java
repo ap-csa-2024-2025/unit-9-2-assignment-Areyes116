@@ -1,43 +1,37 @@
-public class SpecialtyCoffee extends Coffee
-{
-  private String flavor;
+public class SpecialtyCoffee extends Coffee {
+    private String flavor;
 
-  public SpecialtyCoffee()
-  {
-    super();
-    flavor = "vanilla";
-  }
+    public SpecialtyCoffee() {
+        super();
+        flavor = "vanilla";
+    }
 
-  public SpecialtyCoffee(String type, String flavor)
-  {
-    super("small", false, 1, type);
-    this.flavor = flavor;
-  }
+    public SpecialtyCoffee(String type, String flavor) {
+        super("small", false, 1, type);
+        this.flavor = flavor;
+    }
 
-  public SpecialtyCoffee(String size, boolean isSkinny, int shots, String type, String flavor)
-  {
-    super(size, isSkinny, shots, type);
-    this.flavor = flavor;
-  }
+    public SpecialtyCoffee(String size, boolean isSkinny, int shots, String type, String flavor) {
+        super(size, isSkinny, shots, type);
+        this.flavor = flavor;
+    }
 
-  // Method override of Coffee getPrice
-  public double getPrice()
-  {
-    // we will edit in class
-    return 0.0;
-  }
+    @Override
+    public double getPrice() {
+        double price = super.getPrice();
+        // Assuming flavor adds a fixed cost of 50
+        price += 50;
+        return price;
+    }
 
-  // Method override of Coffee toString
-  public String toString()
-  {
-    // we will edit in class
-    return null;
-  }
+    @Override
+    public String toString() {
+        return super.toString() + " with " + flavor + " flavor";
+    }
 
-  // print a message that compares the prices of a regular Coffee
-  // and a SpecialtyCoffee using both getPrice methods
-  public void printPriceComparison()
-  {
-
-  }
+    public void printPriceComparison() {
+        Coffee regularCoffee = new Coffee(getSize(), false, 1, "latte");
+        System.out.println("Regular Coffee Price: " + regularCoffee.getPrice());
+        System.out.println("Specialty Coffee Price: " + getPrice());
+    }
 }
